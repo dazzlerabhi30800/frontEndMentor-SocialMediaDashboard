@@ -5,7 +5,13 @@ function Header() {
     const [click, setClick] = useState(false);
 
     const handleClick = () => {
-        setClick(prevState => !prevState)
+        setClick(!click)
+        if(!click) {
+            document.body.classList.add('light');
+        }
+        else {
+            document.body.classList.remove('light');
+        }
     }
     return (
         <header>
@@ -14,7 +20,7 @@ function Header() {
                 <p className="followers">Total followers: 23,004</p>
             </div>
             <div className="toggle--wrapper">
-                <span className="dark">{click ? "Light Mode" : "Dark Mode"}</span>
+                <span className="dark">{click ? "Dark Mode" : "Light Mode"}</span>
                 <div onClick={handleClick} className={click ? 'toggler active' : 'toggler'}>
                     <div className="circle"></div>
                 </div>
